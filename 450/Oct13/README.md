@@ -33,19 +33,20 @@ You dont want to delete it, **deactivate** it:
 Stack of symbol tables
 ```
 Given:
+
 val a = 123;
 val b = 44;
 if (a == 123) {
-char a = 'x';
-print(a);
-}
+  char a = 'x';
+  print(a);
+  }
 print(a);
 ```
 This should yield:
 ```
 SymbolTable[0]:
-val a
-val b
+  val a
+  val b
 SymbolTable[1]:
-char a
+  char a
 ```
