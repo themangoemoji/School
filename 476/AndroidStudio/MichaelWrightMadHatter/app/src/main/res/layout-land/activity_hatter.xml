@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HatterActivity"
+    android:id="@+id/o">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color"
+        android:id="@+id/buttonColor"
+        android:layout_below="@+id/buttonPicture"
+        android:layout_alignLeft="@+id/buttonPicture"
+        android:layout_alignStart="@+id/buttonPicture"
+        android:layout_alignParentRight="true"
+        android:onClick="onColor" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/feather"
+        android:id="@+id/checkFeather"
+        android:checked="false"
+        android:onClick="onFeather"
+        android:layout_below="@+id/spinnerHat"
+        android:layout_toRightOf="@+id/hatterView"
+        android:layout_alignRight="@+id/spinnerHat"
+        android:layout_alignEnd="@+id/spinnerHat" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/picture"
+        android:id="@+id/buttonPicture"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        android:onClick="onPicture"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerHat"
+        android:focusableInTouchMode="false"
+        android:layout_alignLeft="@+id/buttonColor"
+        android:layout_alignStart="@+id/buttonColor"
+        android:layout_below="@+id/buttonColor"
+        android:paddingLeft="0dp" />
+
+    <edu.msu.wrigh517.michaelwrightmadhatter.HatterView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hatterView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/black"
+        android:layout_toLeftOf="@+id/buttonPicture"
+        android:layout_toStartOf="@+id/buttonPicture"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

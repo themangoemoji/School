@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Michael Wright Mad Hatter</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="feather">Feather</string>
+    <string name="color">Color</string>
+    <string name="picture">Picture</string>
+    <string name="title_activity_color_select">ColorSelectActivity</string>
+    <string name="selectColor">Select</string>
+</resources>
