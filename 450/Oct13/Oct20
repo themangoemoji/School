@@ -1,0 +1,55 @@
+Statement: expression';' {...}
+  | declaration
+
+######IF/ELSE Example
+
+```  
+// Else example
+val x = 1;
+if (x) {
+  x = 5;
+}
+else {
+  x = 10;
+}
+```
+
+######Build the tree for this code:
+
+```
+Block
+  '='
+    'x'
+    random
+      lit(2)
+  'If' // need unique label #, 
+    var(x)
+    BLOCK
+      '='
+        'x'
+        lit(5) // archive, decrement scope
+    Block (Else) // block b/c we have open curly brace, add 1 to scope
+      '='
+        var(x) // search symbol table for x, starting with current, going up
+        lit(10) // check (acceptable type?) ye
+      '='
+        var(x) //check ST, there is no x in current scope, so this is not a redec ~~> legal
+        lit(A)
+      print
+        var(x) // we finish block, archive scope
+```
+
+SymbolTable
+-----------
+scope0
+x val s1
+----------  Block2, when we finish the block, we archive and delete this <<
+scope1
+
+
+Archive is used when converting Abstract Syntax Tree to intermediate code
+
+
+
+
+  
