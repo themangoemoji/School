@@ -41,3 +41,9 @@ add regA 1 regA			// Increment regA past size
 add regA regB regA		// Find position of index
 mem_copy regA 35		// Copy val at index to destination
 ```
+
+###Starting Heap
+First line of TubeCode Assembly output should be `store 10000 0`
+
+
+
