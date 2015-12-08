@@ -21,22 +21,22 @@ Declare is a lot like Define except w/out function body
 
 ##### Removal
 
-  * `x = x + 0` **→** remove
-  * `x = x * 1` **→** remove
+  * `x = x + 0` ➜ remove
+  * `x = x * 1` ➜ remove
   
 ##### Simplification
-  * `x = x * 0`  **-->** `x = 0`
-  * `x = x ^ 2`  **-->** `x = x * x`
-  * `x = x * 8`  **-->** `x = x << 3`
-  * `x = x * 15` **-->** `t = x << 4 x = t - x`
+  * `x = x * 0`  ➜ `x = 0`
+  * `x = x ^ 2`  ➜ `x = x * x`
+  * `x = x * 8`  ➜ `x = x << 3`
+  * `x = x * 15` ➜ `t = x << 4 x = t - x`
   
 ##### Constant Folding
 
 If there is a statement `x = y op z` and y and z are constants then `y op z` can be computed at compile time.
 
 Example:
-  * `x = 2 + 2`       **-->** `x = 4`
-  * `if 2 < 0 jump L` **-->** can be removed
+  * `x = 2 + 2`      ➜ `x = 4`
+  * `if 2 < 0 jump L` ➜ can be removed
   
 ##### Copy Propagation
 
@@ -47,7 +47,7 @@ y = x
 z = 6 * y
 ```
 
-**-->**
+⇣
 
 `z = 6 * x`
   
@@ -60,7 +60,7 @@ c = b + c
 d = a - d
 ```
 
-**-->**
+⇣
 
 ```
 a = b + c
@@ -81,7 +81,7 @@ e = b + c
 
 in this, `a` and `b` are live, `c` and `e` not
 
-**-->**
+⇣
 
 ```
 a = b + c
@@ -89,7 +89,7 @@ b = b - d
 c = c + d
 ```
 
-**-->**
+⇣
 
 ```
 a = b + c
