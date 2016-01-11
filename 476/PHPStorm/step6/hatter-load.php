@@ -23,16 +23,14 @@ function process($user, $password) {
     $pdo = pdo_connect();
 
     $userid = getUser($pdo, $user, $password);
-    $query = "select id, name from hatting where userid='$userid'";
-    $rows = $pdo->query($query);
+    //$query = "select id, name from hatting where userid='$userid'";
+    $idQ = $pdo->quote($userid);
+    $query = "select name, uri, type, x, y, angle, scale, color, feather from hatting where id=$idQ";
 
     echo "<hatter status=\"yes\">";
-    foreach($rows as $row ) {
-        $id = $row['id'];
-        $name = $row['name'];
 
-        echo "<hatting id=\"$id\" name=\"$name\" />\r\n";
-    }
+        echo "$query";
+
     echo "</hatter>";
 }
 
@@ -47,21 +45,20 @@ function process($user, $password) {
 function getUser($pdo, $user, $password) {
     // Does the user exist in the database?
     $userQ = $pdo->quote($user);
-    $query = "select name, uri, type, x, y, rotation, scale, color, feather from hatting where id=$idQ";
-
+    $query = "SELECT id, password from hatteruser where user=$userQ";
 
     $rows = $pdo->query($query);
     if($row = $rows->fetch()) {
         // We found the record in the database
         // Check the password
         if($row['password'] != $password) {
-            echo '<hatter status="no" msg="password error" />';
+            echo '<hatter status="no" msg="image" />';
             exit;
         }
 
         return $row['id'];
     }
 
-    echo '<hatter status="no" msg="message" />';
+    echo '<hatter status="no" msg="user error" />';
     exit;
 }
