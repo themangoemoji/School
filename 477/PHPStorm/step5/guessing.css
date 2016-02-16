@@ -1,0 +1,41 @@
+input[type="submit"] {
+    width: 7em;
+}
+
+/*CSS Reset*/
+fieldset, h1, form {
+    margin: 0;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-size: 1.2em;
+    background-color: red;
+    padding: 0.2em;
+}
+
+#fields {
+    text-align: center;
+    margin-left: 3em;
+
+}
+
+form {
+    width: 320px;
+    margin: 5em auto;
+    border: 1px solid black;
+}
+
+
+p {
+    text-align: center;
+}
+
+input[name='value'] {
+    width: 25px;
+}
+
+p.message {
+    text-align: left;
+    margin: 1em 0.4em;
+}

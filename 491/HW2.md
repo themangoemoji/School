@@ -76,6 +76,11 @@ c. `SELECT * FROM Post, Tag WHERE Post.PostID = Tag.PostID`
 * Number of rows: min = 0
 * Number of Columns   = 3
 
+d. `SELECT COUNT(*) FROM Post, Tag;`
+* Number of rows: max = 500,000
+* Number of rows: min = 1
+* Number of Columns   = 1
+
 
 
 ###Q3
@@ -102,7 +107,25 @@ What are the 3 bins created if we apply the following discretization methods to 
 
 1. **Equal Width**
 
-Bin 1: `1, 2, 8, 8.5`
-Bin 2: `9, 10, 11, 12`
-Bin 3: `19, 21, 23, 25`
+  Bin 1: `1, 2, 8, 8.5`
+
+  Bin 2: `9, 10, 11, 12`
+
+  Bin 3: `19, 21, 23, 25`
+
+2. **Equal Frequency**
+
+  Bin 1: `1, 2, 8, 8.5`
+
+  Bin 2: `9, 10, 11, 12`
+
+  Bin 3: `19, 21, 23, 25`
+
+2. **Clustering**
+
+  Bin 1: `1, 2, 8, 8.5`
+
+  Bin 2: `9, 10, 11, 12`
+
+  Bin 3: `19, 21, 23, 25`
 
