@@ -50,7 +50,7 @@ country varchar(40),
 
 
 
-| User   | Post    | Tab       | Liked   |
+| User   | Post    | Tag       | Liked   |
 |--------|---------|-----------|---------|
 | 50,000 | 500,000 | 1,000,000 | 750,000 |
 
@@ -60,7 +60,7 @@ country varchar(40),
 
 
 a. `SELECT * FROM User WHERE Username = ‘CSE491891’;`
-* Number of rows: max = 50,000
+* Number of rows: max = 1
 * Number of rows: min = 0
 * Number of Columns   = 4
 
@@ -72,12 +72,12 @@ b. `SELECT * FROM Liked WHERE Username = ‘CSE491891’ AND Rating = ’Dislike
 
 
 c. `SELECT * FROM Post, Tag WHERE Post.PostID = Tag.PostID`
-* Number of rows: max = 750,000
+* Number of rows: max = 1,000,000
 * Number of rows: min = 0
-* Number of Columns   = 3
+* Number of Columns   = 6
 
 d. `SELECT COUNT(*) FROM Post, Tag;`
-* Number of rows: max = 500,000
+* Number of rows: max = 1
 * Number of rows: min = 1
 * Number of Columns   = 1
 
