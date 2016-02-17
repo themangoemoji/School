@@ -168,14 +168,58 @@ Check whether there are any missing values in the time series. If there is, repl
 
 Write your correlation values in the matrix shown below:
 
-|      | AAPL          | MSFT          | F             | GM           | GE           | C             |
-|:------:|:---------------:|:---------------:|:---------------:|:--------------:|:--------------:|:---------------:|
-| **AAPL** | 1             | 0.8530995807  | 0.6960566211  | 0.4258425186 | 0.4369580196 | -0.2992551951 |
-| **MSFT** | 0.8530995807  | 1             | 0.6552827556  | 0.3227766094 | 0.611349688  | -0.0570737898 |
-| **F**    | 0.6960566211  | 0.6552827556  | 1             | 0.6465212911 | 0.308659151  | -0.3515057397 |
-| **GM**   | 0.4258425186  | 0.3227766094  | 0.6465212911  | 1            | 0.4218690083 | 0.0360243786  |
-| **GE**   | 0.4369580196  | 0.611349688   | 0.308659151   | 0.4218690083 | 1            | 0.6477692232  |
-| **C**    | -0.2992551951 | -0.0570737898 | -0.3515057397 | 0.0360243786 | 0.6477692232 | 1             |
+| | AAPL | MSFT          | F             | BAC           | GE            | C            |
+|:------:|:---------------:|:---------------:|:---------------:|:---------------:|:--------------:|:---------------:| 
+| **AAPL** | 1             | 0.8530995807  | 0.6960566211  | -0.2322783661 | 0.4369580196 | -0.2992551951 | 
+| **MSFT** | 0.8530995807  | 1             | 0.6552827556  | 0.0915934546  | 0.611349688  | -0.0570737898 | 
+| **F**    | 0.6960566211  | 0.6552827556  | 1             | -0.2174712501 | 0.308659151  | -0.3515057397 | 
+| **BAC**  | -0.2322783661 | 0.0915934546  | -0.2174712501 | 1             | 0.6806426732 | 0.9071849803  | 
+| **GE**   | 0.4369580196  | 0.611349688   | 0.308659151   | 0.6806426732  | 1            | 0.6477692232  | 
+| **C**    | -0.2992551951 | -0.0570737898 | -0.3515057397 | 0.9071849803  | 0.6477692232 | 1             | 
 
+### Q6
+
+Download the Optical Recognition of Handwritten Digits Data Set
+from the UCI machine learning repository located at https://archive.
+ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits.
+For this experiment, you need to use the training set file named optdigits.
+tra only. Rename the file as optdigits.csv and open it using Excel or
+any text editor. You will find each line has 65 columns, in which the first
+64 columns correspond to pixel values and the last column corresponds to
+the class label (from 0 to 9). Insert a line to the beginning of the file. The
+line should contain the following:
+
+      p1, p2, p3, p4, · · · , p64, class
+
+Make sure you explicitly list the attribute names from p1 to p64 (instead
+of using ·). By adding the above to the first line of your CSV file, it allows
+Weka to recognize the attribute names and class.
+
+
+###### Solutions
+a. Import the data file into Weka. List the number of training examples
+as well as their class proportions (i.e., number of examples that belong
+to class 0, 1, 2, until 9):
+
+3824 training examples
+
+Class Proportions:
+
+class | proportion
+-|-
+0 | 376
+1 | 389
+2 | 380
+3 | 389
+4 | 387
+5 | 376
+6 | 377
+7 | 387
+8 | 380
+9 | 382
+
+c. 
+
+The variance covered threshhold to reduce this was 0.2.
 
 [equation_image]: http://www.saedsayad.com/images/Entropy_univar.png "Entropy Equation"
