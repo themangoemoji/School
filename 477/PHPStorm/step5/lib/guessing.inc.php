@@ -8,7 +8,7 @@ require __DIR__ . "/../vendor/autoload.php";
  * Date: 2/15/16
  * Time: 5:46 PM
  */
-session_start();
+session_start(); // _$SESSION
 
 define("GUESSING_SESSION", 'guessing');
 

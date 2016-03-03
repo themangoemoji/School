@@ -1,0 +1,2 @@
+1. The directory listed from ls in grunt shell corresponds to the files in my home directory in HDFS
+2. The program runs but throws an error because it is missing the file /user/hduser/query.log
