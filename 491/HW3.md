@@ -1,5 +1,29 @@
 # Homework 1
 
+
+### 1
+
+a) hadoop fs -moveToLocal /user/cse491 /user/hduser/data/
+
+b) hadoop fs -cp /user/hduser/data/ /user/data/
+
+c) hadoop fs -mv /user/hduser/data/mydata.txt data.txt
+
+d) hadoop fs -cat /user/hduser/data/data.txt
+
+e) hadoop fs -tail /user/hduser/data/data.txt
+
+f) hadoop fs -copyToLocal /user/cse491/output/part-r-00000 /user/cse491/output.txt
+
+g) hadoop fs -rmr /user/cse491/output
+
+h) hadoop fs -lsr /user/cse491
+
+i) hadoop fs -getmerge /user/cse491 output.txt
+
+j) hadoop fs -chmown ptan /user/ptan
+
+
 ### 2a
 
 > Problem: Compute the average price of single family homes larger than 3000 square feet for each city
@@ -124,16 +148,4 @@ Reducer Output 2: Key is pair of users, value is list of similar interests
 'Shawna, Shawn': {swimming, hiking, Spartan Football}
 ...
 ```
-
-3. 
-
-Mapper Function:
-
-Mapper Output:
-
-Reducer Input:
-
-Reduce Function:
-
-Reducer Output:
 
