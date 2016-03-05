@@ -149,3 +149,18 @@ Reducer Output 2: Key is pair of users, value is list of similar interests
 ...
 ```
 
+
+### 3
+
+* sameEdits.java
+
+* wiki.jar
+
+* README.md
+
+* countEditors.java
+
+
+### 4
+
+* countWiki.java
