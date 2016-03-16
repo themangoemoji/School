@@ -11,6 +11,15 @@ namespace Felis;
 
 class View
 {
+
+//    Begin Private Member Variables
+    private $title = "";	///< The page title
+//    End Private Member Variables
+
+
+//      Begin Member Functions
+//  --------------------------
+
     /**
      * Create the HTML for the page footer
      * @return string HTML for the standard page footer
@@ -22,6 +31,7 @@ class View
 HTML;
     }
 
+
     /**
      * Set the page title
      * @param $title New page title
@@ -29,6 +39,7 @@ HTML;
     public function setTitle($title) {
         $this->title = $title;
     }
+
 
     /**
      * Create the HTML for the contents of the head tag
@@ -43,5 +54,28 @@ HTML;
 HTML;
     }
 
-    private $title = "";	///< The page title
+
+    /**
+     * Create the HTML for the page header
+     * @return string HTML for the standard page header
+     */
+    public function header() {
+        return <<<HTML
+<nav>
+    <ul class="left">
+        <li><a href="./">The Felis Agency</a></li>
+    </ul>
+</nav>
+
+<header class="main">
+    <h1><img src="images/comfortable.png" alt="Felis Mascot"> $this->title
+    <img src="images/comfortable.png" alt="Felis Mascot"></h1>
+</header>
+HTML;
+    }
+
+
+//  --------------------------
+    //  End Member Functions
+
 }

@@ -12,15 +12,9 @@ $view->setTitle('Felis Investigations');
 
 <body>
 <div class="login">
-<nav>
-	<ul class="left">
-		<li><a href="./">The Felis Agency</a></li>
-	</ul>
-</nav>
 
-<header class="main">
-	<h1><img src="images/comfortable.png" alt="Felis Mascot"> Felis Investigations <img src="images/comfortable.png" alt="Felis Mascot"></h1>
-</header>
+<!--    Implace the Header-->
+    <?php echo $view->header(); ?>
 
 <form>
 	<fieldset>
