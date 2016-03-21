@@ -14,16 +14,20 @@ class LoginView extends HomeView
 
     private $session;
     private $get;
-
+    private $e_tag = "no_error";
     /**
      * LoginView constructor.
      * @param $get
      * @param $session
      */
-    public function __construct($get, $session)
+    public function __construct($session, $get)
     {
         $this->get = $get;
         $this->session = $session;
+        if(isset($this->get['e'])) {
+            $this->e_tag = strip_tags($this->get['e']);
+        }
+
     }
 
 
@@ -33,20 +37,33 @@ class LoginView extends HomeView
      */
     protected function headerAdditional()
     {
-        if ($this->get['e']) {
 
-            return <<<HTML
-<h1>NOOO!!!</h1>
-<p><a href="">Learn more</a></p>
-HTML;
+//        Get the error tag
+
+
+//        If an error tag was found
+        if ($this->e_tag == "") {
+//            The user was not found for the session
+            if (is_null($this->session['user'])) {
+                $error = "The user was not found for that email/password combination";
+            }
+
         }
 
+//        No problem logging in
         else {
-            return <<<HTML
-<h1>OHHH YEAAAH!!!</h1>
-<p><a href="">Learn more</a></p>
-HTML;
+            $error = "";
         }
+
+        return <<<HTML
+<p>Welcome to Felis Investigations!</p>
+<p>Domestic, divorce, and carousing investigations conducted without publicity. People and cats shadowed
+	and investigated by expert inspectors. Katnapped kittons located. Missing cats and witnesses located.
+	Accidents, furniture damage, losses by theft, blackmail, and murder investigations.</p>
+<p><a href="">Learn more</a></p>
+<h3 class="error">$error</h3>
+HTML;
+
 
     }
 

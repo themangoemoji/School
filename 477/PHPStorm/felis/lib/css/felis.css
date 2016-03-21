@@ -158,6 +158,11 @@ form.table input[type="submit"] {
 .center {
   text-align: center;
 }
+.error {
+  text-align: center;
+  background-color: #fd5e4e;
+  color: white;
+}
 div.mainpage header a {
   padding: 0.5em;
   background-color: #4c4;
