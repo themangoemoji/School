@@ -1,0 +1,24 @@
+# Exercise 15
+
+## J4.8 Decision Tree
+
+Classification accuracy of Diabetes test data:
+
+`74.2188%`
+
+Number of leaf nodes:
+
+`20`
+
+## JRip Rule-Based Classifier
+
+
+Classification accuracy of Diabetes test data:
+
+`77.6042%`
+
+Number of rules:
+
+`4`
+
+This is 16 fewer than the number of leaf nodes from the Decision Tree
