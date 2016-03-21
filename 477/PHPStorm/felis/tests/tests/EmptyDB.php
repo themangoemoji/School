@@ -6,15 +6,14 @@ require __DIR__ . "/../../vendor/autoload.php";
  * @brief Unit tests for the class 
  */
 
-class EmptyDBTest extends \PHPUnit_Extensions_Database_TestCase
+class EmptyDBTest extends BaseDB
 {
 	/**
      * @return PHPUnit_Extensions_Database_DB_IDatabaseConnection
      */
     public function getConnection()
     {
-
-        return $this->createDefaultDBConnection($pdo, 'cbowen');
+        return $this->createDefaultDBConnection(self::$site->pdo(), 'wrigh517');
     }
 
     /**

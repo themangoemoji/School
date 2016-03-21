@@ -62,6 +62,16 @@ class ViewTest extends \PHPUnit_Framework_TestCase
         $this->assertNotContains('<ul class="right">', $html);
     }
 
+    public function test_addLink() {
+        $view = new Felis\View();
+        $view->setTitle("whatever");
+        $view->addLink("test.php", "Name to Display");
+        $html = $view->header();
+
+        $this->assertContains('<ul class="right"><li><a href="test.php">Name to Display</a></li></ul>', $html);
+    }
+
+
 }
 
 

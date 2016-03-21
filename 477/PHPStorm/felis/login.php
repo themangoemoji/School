@@ -1,7 +1,7 @@
 <?php
+$open = true;
 require 'lib/site.inc.php';
-$view = new Felis\View();
-$view->setTitle('Felis Investigations');
+$view = new Felis\LoginView($_SESSION, $_GET);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $view->setTitle('Felis Investigations');
 <!--    Implace the Header-->
     <?php echo $view->header(); ?>
 
-<form>
+<form method="post" action="post/login.php">
 	<fieldset>
 		<legend>Login</legend>
 		<p>
