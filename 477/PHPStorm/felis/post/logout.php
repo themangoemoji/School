@@ -9,4 +9,5 @@
 require '../lib/site.inc.php';
 
 $root = $site->getRoot();
+unset($_SESSION['user']);
 header("location: " . $root . '/');

@@ -83,16 +83,43 @@ class UsersDBTest extends \PHPUnit_Extensions_Database_TestCase
 
         $dude = $users->get(7);
         $this->assertInstanceOf('Felis\User', $dude);
-       /* $this->assertEquals($dude->getEmail(), "dudess@dude.com");
-        $this->assertEquals($dude->getAddress(), "Dudess Address");
-        $this->assertEquals($dude->getId(), "7");
-        $this->assertEquals($dude->getJoined(), "1421988626");
-        $this->assertEquals($dude->getName(), "Dudess, The");
-        $this->assertEquals($dude->getNotes(), "Dudess Notes");
-        $this->assertEquals($dude->getPhone(), "111-222-3333");
-        $this->assertEquals($dude->getRole(), "S");*/
+
     }
 
+
+    public function test_update() {
+        $users = new Felis\Users(self::$site);
+
+        $owen = $users->get(8);
+        $owen->setEmail("ourlordandsaviour@cse.msu.edu");
+        $owen->setAddress("Nazareth");
+        $owen->setName("Jesus Christ Himself");
+        $owen->setNotes("On the third day I will rise and feed the world nachos");
+        $owen->setPhone("696-969-6969");
+        $owen->setRole("S");
+
+        $users->update($owen);
+
+        $owen_post_rapture = $users->get(8);
+
+        $this->assertNotEquals($owen_post_rapture->getEmail(), "dudess@dude.com");
+        $this->assertNotEquals($owen_post_rapture->getAddress(), "Dudess Address");
+        $this->assertNotEquals($owen_post_rapture->getId(), "7");
+        $this->assertNotEquals($owen_post_rapture->getJoined(), "1421988626");
+        $this->assertNotEquals($owen_post_rapture->getName(), "Dudess, The");
+        $this->assertNotEquals($owen_post_rapture->getNotes(), "Dudess Notes");
+        $this->assertNotEquals($owen_post_rapture->getPhone(), "111-222-3333");
+        $this->assertNotEquals($owen_post_rapture->getRole(), "A");
+
+        $this->assertEquals($owen_post_rapture->getEmail(), "ourlordandsaviour@cse.msu.edu");
+        $this->assertEquals($owen_post_rapture->getAddress(), "Nazareth");
+        $this->assertEquals($owen_post_rapture->getId(), "8");
+        $this->assertEquals($owen_post_rapture->getName(), "Jesus Christ Himself");
+        $this->assertEquals($owen_post_rapture->getNotes(), "On the third day I will rise and feed the world nachos");
+        $this->assertEquals($owen_post_rapture->getPhone(), "696-969-6969");
+        $this->assertEquals($owen_post_rapture->getRole(), "S");
+
+    }
 }
 
 /// @endcond

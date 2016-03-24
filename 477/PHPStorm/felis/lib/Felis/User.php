@@ -12,10 +12,6 @@ namespace Felis;
 class User
 {
 
-
-
-
-
     private $id;		///< The internal ID for the user
     private $email;		///< Email address
     private $name; 		///< Name as last, first
@@ -33,6 +29,54 @@ class User
 
 
     const SESSION_NAME = 'user';
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param mixed $notes
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
 
 
 
@@ -125,5 +169,8 @@ class User
         return $this->role === self::ADMIN ||
         $this->role === self::STAFF;
     }
+
+
+
 
 }
