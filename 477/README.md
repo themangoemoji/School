@@ -3,13 +3,17 @@
 
 
 **[General Step Notes](#step-notes)**  
+
+  - [Composer Setup](#install-and-set-up-composer)
+  - [Debug Setup](#debugging-in-phpstorm)
+  
 **[Database Notes](#database-notes)**  
 **[Grades](#grades)**  
 
 
 ## Step Notes
 
-#### Install/Set Up Composer
+#### Install and Set Up Composer
 
 First, create a `composer.json` file that contains the following:
 
