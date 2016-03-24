@@ -11,6 +11,18 @@
 
 #### Install/Set Up Composer
 
+First, create a `composer.json` file that contains the following:
+
+```json
+{
+  "autoload": {
+    "psr-4": {"Felis\\": "lib/Felis"}
+  }
+}
+```
+
+Next, run the following to install the test suite in a terminal window in the project directory.
+
 ```
 php -r "readfile('https://getcomposer.org/installer');" | php
 php composer.phar install
