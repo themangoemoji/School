@@ -33,7 +33,7 @@ $view = new Felis\HomeView();
 </header>-->
 
     <?php echo $view->header(); ?>
-f
+
 
     <?php
     $view->addTestimonial('Found out that fluffy was fluffing someone else on the side.

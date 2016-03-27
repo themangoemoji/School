@@ -1,3 +1,14 @@
+<?php
+require 'lib/site.inc.php';
+$view = new Felis\CasesView();
+if(!$view->protect($site, $user)) {
+header("location: " . $view->getProtectRedirect());
+exit;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +33,7 @@
 	<h1><img src="images/comfortable.png" alt="Felis Mascot"> Felis Cases <img src="images/comfortable.png" alt="Felis Mascot"></h1>
 </header>
 
-<form class="table">
+<form class="table" method="post" action="post/cases.php">
 	<p>
 	<input type="submit" name="add" id="add" value="Add">
 	<input type="submit" name="delete" id="delete" value="Delete">

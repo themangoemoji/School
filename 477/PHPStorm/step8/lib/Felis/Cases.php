@@ -27,7 +27,7 @@ class Cases extends Table
      */
     public function __construct(Site $site)
     {
-        parent::__construct($site, "s8_clientcase");
+        parent::__construct($site, "clientcase");
         $this->site = $site;
     }
 
@@ -40,7 +40,6 @@ class Cases extends Table
     {
         $users = new Users($this->site);
         $usersTable = $users->getTableName();
-
         $sql = <<<SQL
 SELECT c.id, c.client, client.name as clientName,
        c.agent, agent.name as agentName,
@@ -69,7 +68,8 @@ SQL;
             return null;
         }
 
-        return new ClientCase($statement->fetch(\PDO::FETCH_ASSOC));
+        $clientcase = new ClientCase($statement->fetch(\PDO::FETCH_ASSOC));
+        return $clientcase;
 
     }
 

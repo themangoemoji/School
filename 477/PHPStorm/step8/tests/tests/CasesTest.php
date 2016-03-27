@@ -3,10 +3,10 @@ require __DIR__ . "/../../vendor/autoload.php";
 
 /** @file
  * @brief Empty unit testing template
- * @cond 
- * @brief Unit tests for the class 
+ * @cond
+ * @brief Unit tests for the class
  */
-class CasesTest extends \PHPUnit_Framework_TestCase
+class CasesTest extends \PHPUnit_Extensions_Database_TestCase
 {
 	private static $site;
 
@@ -17,6 +17,25 @@ class CasesTest extends \PHPUnit_Framework_TestCase
 			$localize(self::$site);
 		}
 	}
+
+
+	/**
+	 * @return PHPUnit_Extensions_Database_DB_IDatabaseConnection
+	 */
+	public function getConnection()
+	{
+		return $this->createDefaultDBConnection(self::$site->pdo(), 'wrigh517');
+	}
+
+
+	/**
+	 * @return PHPUnit_Extensions_Database_DataSet_IDataSet
+	 */
+	public function getDataSet()
+	{
+		return $this->createFlatXMLDataSet(dirname(__FILE__) . '/db/clientcase.xml');
+	}
+
 
 
 	/**

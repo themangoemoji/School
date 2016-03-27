@@ -45,14 +45,14 @@ class LoginView extends HomeView
         if ($this->e_tag == "") {
 //            The user was not found for the session
             if (is_null($this->session['user'])) {
-                $error = "The user was not found for that email/password combination";
+                $e_tag = "The user was not found for that email/password combination";
             }
 
         }
 
 //        No problem logging in
         else {
-            $error = "";
+            $e_tag = "";
         }
 
         return <<<HTML
@@ -61,7 +61,7 @@ class LoginView extends HomeView
 	and investigated by expert inspectors. Katnapped kittons located. Missing cats and witnesses located.
 	Accidents, furniture damage, losses by theft, blackmail, and murder investigations.</p>
 <p><a href="">Learn more</a></p>
-<h3 class="error">$error</h3>
+<h3 class="error">$e_tag</h3>
 HTML;
 
 
