@@ -105,6 +105,44 @@ SQL;
      */
     public function getCases()
     {
+        $users = new Users($this->site);
+        $usersTable = $users->getTableName();
+        $sql = <<<SQL
+
+        SELECT c.id, c.client, client.name as clientName,
+c.agent, agent.name as agentName,
+number, summary, status
+FROM $this->tableName as c
+Inner Join $usersTable as client on client.id=c.client
+Inner Join $usersTable as agent on agent.id=c.agent
+order by status desc, number asc
+
+SQL;
+
+        $pdo = $this->pdo();
+        $statement = $pdo->prepare($sql);
+
+        /*
+               Result will fetch user data into an associative array and pass that to the User constructor, or it will
+               return zero rows
+        */
+        $statement->execute(array());
+        if ($statement->rowCount() === 0) {
+            return null;
+        }
+
+        $clientcases = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        $retArr = array();
+
+        foreach($clientcases as $case) {
+
+            $retArr[] = new ClientCase($case);
+
+        }
+
+        return $retArr;
+
     }
 
 
