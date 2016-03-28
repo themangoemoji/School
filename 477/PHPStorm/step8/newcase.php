@@ -1,3 +1,12 @@
+<?php
+require 'lib/site.inc.php';
+$view = new Felis\NewCaseView($site);
+if(!$view->protect($site, $user)) {
+	header("location: " . $view->getProtectRedirect());
+	exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +18,7 @@
 
 <body>
 <div class="case">
-<nav>
+<!--<nav>
 	<ul class="left">
 		<li><a href="./">The Felis Agency</a></li>
 	</ul>
@@ -18,36 +27,15 @@
 		<li><a href="cases.php">Cases</a></li>
 		<li><a href="./">Log out</a></li>
 	</ul>
-</nav>
-
-<header class="main">
-	<h1><img src="images/comfortable.png" alt="Felis Mascot"> Felis New Case <img src="images/comfortable.png" alt="Felis Mascot"></h1>
-</header>
-
-<form>
-	<fieldset>
-		<legend>New Case</legend>
-		<p>Client:
-			<select>
-				<option>Helm, Levon</option>
-				<option>Astor, Mary</option>
-			</select>
-		</p>
-
-		<p>
-			<label for="number">Case Number: </label>
-			<input type="text" id="number" name="number" placeholder="Case Number">
-		</p>
-
-		<p><input type="submit" value="OK"> <input type="submit" value="Cancel"></p>
-
-	</fieldset>
-</form>
+</nav>-->
 
 
-<footer>
-	<p>Copyright © 2016 Felis Investigations, Inc. All rights reserved.</p>
-</footer>
+
+<?php
+echo $view->header();
+echo $view->present();
+echo $view->footer();
+?>
 
 </div>
 

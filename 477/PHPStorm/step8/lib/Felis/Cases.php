@@ -73,5 +73,39 @@ SQL;
 
     }
 
+    /**
+     * @param $client The client whose case we open
+     * @param $agent The agent on the case
+     * @param $number Case number
+     * @return null
+     */
+    public function insert($client, $agent, $number) {
+        $sql = <<<SQL
+insert into $this->tableName(client, agent, number, summary, status)
+values(?, ?, ?, "", "")
+SQL;
+
+        $pdo = $this->pdo();
+        $statement = $pdo->prepare($sql);
+
+        try {
+            if($statement->execute(array($client, $agent, $number)) === false) {
+                return null;
+            }
+        } catch(\PDOException $e) {
+            return null;
+        }
+
+        return $pdo->lastInsertId();
+    }
+
+    /**
+     * Returns all cases
+     * Sort by status, case number
+     */
+    public function getCases()
+    {
+    }
+
 
 }
