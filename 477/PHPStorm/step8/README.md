@@ -2,18 +2,27 @@
 
 ## Contents
 
-[Passwords, Salt, and Validation](inserting-passwords)
+**[Validation](#validation)**
 
-[Error Messages](error-messages)
+ * [Passwords & Salt](#passwords-and-salt)
+ * [Logging In](#logging-in)
+ 
+**[Error Messages](#error-messages)**
 
-### Inserting passwords
+ * [Controllers](#controllers)
+ * [Post](#post)
+ * [View](#view)
+
+## Validation
+
+### Passwords and Salt
 
 To securely insert a user into a database, you have to remember these things:
 
 1. Salt the password
 2. Encrypt the password
 
-###### Salting a Password in PHP
+#### Salting a Password in PHP
 
 What is salt? It is added length do an encrypted password so that brute-force attacks take much longer.
 Yes, if the `hackers` got access to the DB, then it doesnt matter, but thats another matter.
@@ -58,9 +67,11 @@ SQL;
   
 Basically what we do here is to generate random salt, take a clear text password, concatanate those two and use the sha hash to create a very long confusing string - and we store that very long confusing string into our database.
 
-Then our login function will also have to use salt, right? Yep. It grabs the salt from the user table, grabs the password it is passed, combines the two, and makes sure it super matches the long confusing password string in our database.
 
-###### Logging in
+### Logging in
+
+After creating salt to combine with the plaintext password, the login function will also have to use salt, right? Yep. It grabs the salt from the user table, grabs the password it is passed, combines the two, and makes sure it super matches the long confusing password string in our database.
+
 
 ```php
  /**
@@ -109,7 +120,10 @@ SQL;
     }
 ```
 
-### Error Messages
+## Error Messages
+
+
+### Controllers
 
 Error messages are controlled mainly by the, well, controller. Because of this, we make a controller base class that manages errors:
 
@@ -208,6 +222,7 @@ class PasswordValidateController extends Controller
 ...
 ```
 
+### Post
 
 In order to do this we need to make sure our post pages know about the `$_SESSION`:
 
@@ -220,6 +235,8 @@ $controller = new Felis\PasswordValidateController($site, $_POST, $_SESSION);
 header("location: " . $controller->getRedirect());
 
 ```
+
+### View
 
 And lastly, our `View` needs to know of the `$_SESSION`, and it **emplaces our errors** as well:
 
