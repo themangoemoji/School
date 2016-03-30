@@ -14,11 +14,35 @@ class View
 /*     Begin Member Variables
   --------------------------*/
 
+    protected $site;		///< The Site object
+    protected $session;		///< $_SESSION
+    protected $get;			///< $_GET
+
+    protected $redirect = null;	///< Optional redirect?
 
     private $title = "";	///< The page title
     private $links = array();	///< Links to add to the nav bar
+    private $protectRedirect = null;
 
 
+    const SESSION_ERROR = "felis_error";
+
+
+    /**
+     * View constructor.
+     * @param array $get $_GET
+     * @param array $session $_SESSION
+     */
+    public function __construct(Site $site, array $get, array $session) {
+        /*
+         * When I found that several pages needed $_GET and $_SESSION
+         * and error message handling, I found it easiest to just move
+         * that into the View base class.
+         */
+        $this->site = $site;
+        $this->get = $get;
+        $this->session = $session;
+    }
 /*------------------------
     End Member Variables*/
 
@@ -146,8 +170,25 @@ HTML;
         return $this->protectRedirect;
     }
 
-    /// Page protection redirect
-    private $protectRedirect = null;
+
+    /**
+     * Get any optional error messages
+     * @return string Optional error message HTML or empty if none.
+     */
+    public function errorMsg() {
+        if(isset($this->get['e']) && isset($this->session[self::SESSION_ERROR])) {
+            return '<p class="error">' . $this->session[self::SESSION_ERROR] . '</p>';
+        } else {
+            return '';
+        }
+    }
+
+    public function error() {
+$error = $this->errorMsg();
+        return <<<HTML
+<h3 class="error">$error</h3>
+HTML;
+    }
 
 /*--------------------
 End Member Functions*/

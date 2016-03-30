@@ -12,13 +12,16 @@ namespace Felis;
 class CasesView extends View
 {
 
+    private $site;
+
     /**
      * Constructor
      * Sets the page title and any other settings.
      */
-    public function __construct() {
+    public function __construct(Site $site) {
         $this->setTitle("Felis Investigations Cases");
         $this->addLink("logout.php", "Log Out");
+        $this->site = $site;
     }
 
     public function present() {
@@ -40,35 +43,32 @@ class CasesView extends View
 			<th>Most Recent Report</th>
 			<th>Status</th>
 		</tr>
+HTML;
 
-		<tr>
-			<td><input type="radio" name="user"></td>
-			<td><a href="case.php">16-0088</a></td>
-			<td>Swift, Taylor</td>
-			<td>Bogart, Humphrey</td>
-			<td class="desc"><div>Tabby sneaking around her place.</div></td>
-			<td>2-16-2016 11:32pm</td>
-			<td>Open</td>
-		</tr>
-		<tr>
-			<td><input type="radio" name="user"></td>
-			<td><a href="case.php">16-0172</a></td>
-			<td>Trump, Donald</td>
-			<td>Martin, Harvey</td>
-			<td class="desc"><div>Garbage cans regularly knocked over.</div></td>
-			<td>2-12-2016 1:19am</td>
-			<td>Open</td>
-		</tr>
+		$cases = new Cases($this->site);
+		$all = $cases->getCases();
+		foreach($all as $case) {
+			$id = $case->getId();
+			$num = $case->getNumber();
+			$client = $case->getClientName();
+			$agent = $case->getAgentName();
+			$summary = $case->getSummary();
+			$open = $case->getStatus() === ClientCase::STATUS_OPEN ?
+            	"Open" : "Closed";
 
+			$html .= <<<HTML
 		<tr>
-			<td><input type="radio" name="user"></td>
-			<td><a href="case.php">16-0218</a></td>
-			<td>Diamond, Olivia</td>
-			<td>Martin, Harvey</td>
-			<td class="desc"><div>Macavity stole her tuna caserole.</div></td>
-			<td>1-12-2015 3:33am</td>
-			<td>Closed</td>
+			<td><input type="radio" name="user" value="$id"></td>
+			<td><a href="case.php?id=$id">$num</a></td>
+			<td>$client</td>
+			<td>$agent</td>
+			<td class="desc"><div>$summary</div></td>
+			<td></td>
+			<td>$open</td>
 		</tr>
+HTML;
+    }
+        $html .= <<<HTML
 	</table>
 </form>
 

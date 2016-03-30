@@ -28,7 +28,7 @@ $view = new Felis\LoginView($_SESSION, $_GET);
 			<input type="password" id="password" name="password" placeholder="Password">
 		</p>
 		<p>
-			<input type="submit" value="Log in"> <a href="">Lost Password</a>
+			<input type="submit" value="Log in"> <a href="reset.php">Lost Password</a>
 		</p>
 		<p><a href="./">Felis Agency Home</a></p>
 

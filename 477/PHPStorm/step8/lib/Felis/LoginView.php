@@ -12,8 +12,6 @@ namespace Felis;
 class LoginView extends HomeView
 {
 
-    private $session;
-    private $get;
     private $e_tag = "no_error";
     /**
      * LoginView constructor.
@@ -37,10 +35,6 @@ class LoginView extends HomeView
      */
     protected function headerAdditional()
     {
-
-//        Get the error tag
-
-
 //        If an error tag was found
         if ($this->e_tag == "") {
 //            The user was not found for the session

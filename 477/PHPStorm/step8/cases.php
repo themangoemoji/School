@@ -1,6 +1,6 @@
 <?php
 require 'lib/site.inc.php';
-$view = new Felis\CasesView();
+$view = new Felis\CasesView($site);
 if(!$view->protect($site, $user)) {
 header("location: " . $view->getProtectRedirect());
 exit;
@@ -33,11 +33,12 @@ exit;
 	<h1><img src="images/comfortable.png" alt="Felis Mascot"> Felis Cases <img src="images/comfortable.png" alt="Felis Mascot"></h1>
 </header>
 
-<?php echo $view->present(); ?>
+<?php
+echo $view->present();
+echo $view->footer();
+?>
 
-<footer>
-<p>Copyright © 2016 Felis Investigations, Inc. All rights reserved.</p>
-</footer>
+
 
 </div>
 

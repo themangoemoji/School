@@ -6,6 +6,21 @@ require __DIR__ . "/../../vendor/autoload.php";
  * @brief Unit tests for the class 
  */
 
+class EmailMock extends Felis\Email {
+    public function mail($to, $subject, $message, $headers)
+    {
+        $this->to = $to;
+        $this->subject = $subject;
+        $this->message = $message;
+        $this->headers = $headers;
+    }
+
+    public $to;
+    public $subject;
+    public $message;
+    public $headers;
+}
+
 class UsersDBTest extends \PHPUnit_Extensions_Database_TestCase
 {
     private static $site;
@@ -134,6 +149,73 @@ class UsersDBTest extends \PHPUnit_Extensions_Database_TestCase
         $c1 = $clients[1];
         $this->assertEquals(10, $c1['id']);
         $this->assertEquals("Simpson, Marge", $c1['name']);
+    }
+
+    public function test_exists() {
+        $users = new Felis\Users(self::$site);
+
+        $this->assertTrue($users->exists("dudess@dude.com"));
+        $this->assertFalse($users->exists("dudess"));
+        $this->assertFalse($users->exists("cbowen"));
+        $this->assertTrue($users->exists("cbowen@cse.msu.edu"));
+        $this->assertFalse($users->exists("nobody"));
+        $this->assertFalse($users->exists("7"));
+    }
+
+    public function test_add() {
+        $users = new Felis\Users(self::$site);
+
+        $mailer = new EmailMock();
+
+        $user7 = $users->get(7);
+        $this->assertContains("Email address already exists",
+            $users->add($user7, $mailer));
+
+        $row = array('id' => 0,
+            'email' => 'dude@ranch.com',
+            'name' => 'Dude, The',
+            'phone' => '123-456-7890',
+            'address' => 'Some Address',
+            'notes' => 'Some Notes',
+            'password' => '12345678',
+            'joined' => '2015-01-15 23:50:26',
+            'role' => 'S'
+        );
+        $user = new Felis\User($row);
+        $users->add($user, $mailer);
+
+        $table = $users->getTableName();
+        $sql = <<<SQL
+select * from $table where email='dude@ranch.com'
+SQL;
+
+        $stmt = $users->pdo()->prepare($sql);
+        $stmt->execute();
+        $this->assertEquals(1, $stmt->rowCount());
+
+        $this->assertEquals("dude@ranch.com", $mailer->to);
+        $this->assertEquals("Confirm your email", $mailer->subject);
+    }
+
+    public function test_setPassword() {
+        $users = new Felis\Users(self::$site);
+
+        // Test a valid login based on user ID
+        $user = $users->login("dudess@dude.com", "87654321");
+        $this->assertNotNull($user);
+        $this->assertEquals("Dudess, The", $user->getName());
+
+        // Change the password
+        $users->setPassword(7, "dFcCkJ6t");
+
+        // Old password should not work
+        $user = $users->login("dudess@dude.com", "87654321");
+        $this->assertNull($user);
+
+        // New password does work!
+        $user = $users->login("dudess@dude.com", "dFcCkJ6t");
+        $this->assertNotNull($user);
+        $this->assertEquals("Dudess, The", $user->getName());
     }
 
 }

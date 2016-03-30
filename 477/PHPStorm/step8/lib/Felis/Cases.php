@@ -146,4 +146,24 @@ SQL;
     }
 
 
+    /**
+     * Update a case record
+     * @param ClientCase $case Modified case
+     * @return false on failure
+     */
+    public function update(ClientCase $case, $id) {
+        $sql = <<<SQL
+update $this->tableName
+set number=?, agent=?, summary=?, status=?
+where id=$id
+SQL;
+
+        $stmt = $this->pdo()->prepare($sql);
+        $ret = $stmt->execute(array($case->getNumber(), $case->getAgent(), $case->getSummary(), $case->getStatus()));
+
+        return $ret;
+    }
+
+
+
 }
