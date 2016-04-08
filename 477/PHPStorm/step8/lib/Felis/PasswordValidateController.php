@@ -23,10 +23,13 @@ class PasswordValidateController extends Controller
     public function __construct(Site $site, $post, &$session)
     {
         parent::__construct($site, $session);
-
         $root = $site->getRoot();
 
-        // Get the validator
+
+        if (isset($post['cancel'])) {
+            $this->redirect = "$root/";
+            return $this->redirect;
+        }
 
 
         // The OK button was pressed
@@ -39,15 +42,19 @@ class PasswordValidateController extends Controller
             return;
         }
 
-
-        //
+        // THE VALIDATION
         // 1. Ensure the validator is correct! Use it to get the user ID.
         // 2. Destroy the validator record so it can't be used again!
         //
         $validators = new Validators($site);
-        $userid = $validators->getOnce($post['validator']);
+        if (!isset($post['validator'])) {
+            $this->error("password-validate.php", "Are you sure you're supposed to be here?");
+            return;
+        }
+
+        $userid = $validators->getMoreThanOnce($post['validator']);
         if($userid === null) {
-            $this->redirect = "$root/password-validate.php?e";
+            $this->error("password-validate.php", "Are you sure you're supposed to be here?");
             return;
         }
 
@@ -56,38 +63,41 @@ class PasswordValidateController extends Controller
         $editUser = $users->get($userid);
         if($editUser === null) {
             // User does not exist!
-            $this->redirect = "$root/";
+            $this->error("password-validate.php", "We could not find that user.");
             return;
         }
 
+
+        // Check for an email
         $email = trim(strip_tags($post['email']));
         if($email !== $editUser->getEmail()) {
             // Email entered is invalid
-            $this->redirect = "$root/password-validate.php?e";
+            $this->error("password-validate.php", "We couldnt find that email!");
             return;
         }
 
-        $password1 = trim(strip_tags($post['password']));
-        $password2 = trim(strip_tags($post['password2']));
-        if($password1 !== $password2) {
-            // Passwords do not match
-            $this->redirect = "$root/password-validate.php?e";
-            return;
-        }
 
-        // Check user input
-        if($password1 != $password2) {
-            // Login failed
-            $this->redirect = "$root/password-validate.php?e";
-        }
-
-        if(strlen($password1) < 8) {
+        // Make sure password is long enough
+        if(strlen($password) < 8) {
             // Password too short
-            $this->redirect = "password-validate.php?e";
+            $this->error("password-validate.php", "You password must be longer than 8 characters, doofus.");
             return;
         }
 
-        $users->setPassword($userid, $password1);
+        $userid = $validators->getOnce($post['validator']);
+        if($userid === null) {
+            $this->error("password-validate.php", "Are you sure you're supposed to be here?");
+            return;
+        }
+
+        $users->setPassword($userid, $password);
+
+
+
+
+
+
+
     }
 
 

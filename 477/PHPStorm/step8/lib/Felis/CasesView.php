@@ -12,7 +12,6 @@ namespace Felis;
 class CasesView extends View
 {
 
-    private $site;
 
     /**
      * Constructor

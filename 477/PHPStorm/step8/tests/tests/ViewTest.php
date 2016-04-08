@@ -1,6 +1,11 @@
 <?php
 require __DIR__ . "/../../vendor/autoload.php";
 
+
+
+
+
+
 /** @file
  * @brief Empty unit testing template
  * @cond 
@@ -8,12 +13,11 @@ require __DIR__ . "/../../vendor/autoload.php";
  */
 class ViewTest extends \PHPUnit_Framework_TestCase
 {
-	public function test1() {
-		//$this->assertEquals($expected, $actual);
-	}
+
 
 	public function test_footer() {
-		$view = new Felis\View();
+
+		$view = new Felis\View(null, array(), array());
 
 		$this->assertContains('<footer><p>Copyright © 2016 Felis Investigations, Inc. All rights reserved.</p></footer>',
 			$view->footer());
@@ -27,7 +31,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
      * <link rel="stylesheet" href="lib/css/felis.css">
      */
     public function test_head() {
-        $view = new Felis\View();
+        $view = new Felis\View(null, array(), array());
 
         $view->setTitle("Hey, Whaddup");
         $this->assertContains("<title>Hey, Whaddup</title>", $view->head());
@@ -45,7 +49,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
      * Test the Header and its contents
      **/
     public function test_header() {
-        $view = new Felis\View();
+        $view = new Felis\View(null, array(), array());
         $view->setTitle("whatever");
         $html = $view->header();
 
@@ -63,7 +67,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
     }
 
     public function test_addLink() {
-        $view = new Felis\View();
+        $view = new Felis\View(null, array(), array());
         $view->setTitle("whatever");
         $view->addLink("test.php", "Name to Display");
         $html = $view->header();

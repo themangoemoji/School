@@ -33,7 +33,7 @@ class View
      * @param array $get $_GET
      * @param array $session $_SESSION
      */
-    public function __construct(Site $site, array $get, array $session) {
+    public function __construct(Site $site = null, array $get, array $session) {
         /*
          * When I found that several pages needed $_GET and $_SESSION
          * and error message handling, I found it easiest to just move
@@ -188,6 +188,17 @@ $error = $this->errorMsg();
         return <<<HTML
 <h3 class="error">$error</h3>
 HTML;
+    }
+
+    /**
+     * See if error exists on page, used to decide when to render, get, post, etc.
+     * @return bool
+     */
+    public function errorThrown() {
+        if ($this->errorMsg() != '') {
+            return true;
+        }
+        return false;
     }
 
 /*--------------------

@@ -9,10 +9,12 @@
 namespace Felis;
 
 
-class UserController {
-    public function __construct(Site $site, User $user, array $post) {
+class UserController extends Controller {
+    public function __construct(Site $site, $post, &$session, $get) {
+        parent::__construct($site, $session);
         $root = $site->getRoot();
         $this->redirect = "$root/users.php";
+
 
 
         $users = new Users($site);
@@ -24,6 +26,14 @@ class UserController {
         // we have no user, so I'll use an ID of 0 to indicate
         // that we are adding a new user.
         //
+
+
+        if(isset($post['cancel'])) {
+            $this->error("users.php", "User creation cancelled");
+            return;
+        }
+
+
         if(isset($post['id'])) {
             $id = strip_tags($post['id']);
         } else {
@@ -62,23 +72,29 @@ class UserController {
             'joined' => null,
             'role' => $role
         );
+
         $editUser = new User($row);
 
+        if ($id != 0) {
+            $users->update($editUser);
+        }
 
-        if($id == 0) {
+        else {
             // This is a new user
             $mailer = new Email();
             $users->add($editUser, $mailer);
+
         }
+
+
+
+
+
+
+
+
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRedirect() {
-        return $this->redirect;
-    }
 
 
-    private $redirect;	///< Page we will redirect the user to.
 }

@@ -23,6 +23,13 @@ class CasesController
 
         $root = $site->getRoot();
 
+        if(isset($post['delete'])) {
+            $id = $post['user'];
+            $cases = new Cases($site);
+            $cases->delete($id);
+            $this->redirect = "$root/newcase.php";
+        }
+
         if(isset($post['add'])) {
             $this->redirect = "$root/newcase.php";
         }

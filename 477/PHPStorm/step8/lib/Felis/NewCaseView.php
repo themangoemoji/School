@@ -12,14 +12,13 @@ namespace Felis;
 class NewCaseView extends View
 {
 
-    private $site;	///< The Site object
 
 
     /**
      * NewCaseView constructor.
      */
-    public function __construct(Site $site)
-    {
+    public function __construct(Site $site, $get, $session) {
+        parent::__construct($site, $get, $session);
         $this->setTitle("New Case");
         $this->addLink("staff.php", "Staff");
         $this->addLink("cases.php", "Cases");

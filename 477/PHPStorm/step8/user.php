@@ -1,6 +1,6 @@
 <?php
 require 'lib/site.inc.php';
-$view = new Felis\UserView($site);
+$view = new Felis\UserView($site, $_GET);
 if(!$view->protect($site, $user)) {
 	header("location: " . $view->getProtectRedirect());
 	exit;
@@ -19,6 +19,7 @@ echo $view->head();
 
 	<?php
 	echo $view->header();
+	echo $view->error();
 	echo $view->present();
 	echo $view->footer();
 	?>

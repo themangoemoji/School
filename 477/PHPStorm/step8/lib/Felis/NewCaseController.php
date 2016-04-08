@@ -9,24 +9,35 @@
 namespace Felis;
 
 
-class NewCaseController
+class NewCaseController extends Controller
 {
-    private $redirect;
 
     /**
      * LoginController constructor.
      * @param Site $site The Site object
      * @param assay $post $_POST
      */
-    public function __construct(Site $site, User $user, array $post) {
-
+    public function __construct(Site $site, User $user, array $post, &$session) {
+        parent::__construct($site, $session);
         $root = $site->getRoot();
+        $cases = new Cases($site);
+
         if(!isset($post['ok'])) {
+
+
+
+
             $this->redirect = "$root/cases.php";
             return;
         }
 
-        $cases = new Cases($site);
+        $caseNum = $post['number'];
+
+        if($cases->exists($caseNum)) {
+            $this->error("newcase.php", "That case number already exists!");
+            return;
+        }
+
         $id = $cases->insert(strip_tags($post['client']),
             $user->getId(),
             strip_tags($post['number']));

@@ -12,7 +12,6 @@ namespace Felis;
 class ResetView extends View
 {
 
-    protected $site;
 
     public function __construct(Site $site, $get) {
         $this->setTitle("Felis Password Entry");

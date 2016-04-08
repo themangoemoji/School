@@ -126,6 +126,57 @@ SQL;
         }
 
 
+    /**
+     * Determine if a validator is valid. If it is,
+     * get the user ID for that validator. Then destroy any
+     * validator records for that user ID. Return the
+     * user ID.
+     * @param $validator Validator to look up
+     * @return User ID or null if not found.
+     */
+    public function getMoreThanOnce($validator) {
+
+        // See if validator exists first
+        // Query for userid, validator from validator table, match on the validator
+        $sql = <<<SQL
+SELECT distinct v.userid, v.validator
+from $this->tableName v
+where v.validator=?
+SQL;
+        $pdo = $this->pdo();
+        $statement = $pdo->prepare($sql);
+
+        /*
+               Result will fetch user data into an associative array and pass that to the User constructor, or it will
+               return zero rows
+        */
+        $statement->execute(array($validator));
+
+        // DEBUG Line
+        $rowcount = $statement->rowCount();
+
+        if($statement->rowCount() === 0) {
+            return null;
+        }
+
+        // Delete the validator if it was found
+        else {
+            $userid_row = $statement->fetch(\PDO::FETCH_ASSOC);
+            $userid = $userid_row['userid'];
+            $validator = $userid_row['validator'];
+
+
+            return $userid;
+
+        }
+
+
+        return null;
+
+
+
+    }
+
     private $name;
     private $validator;
     private $date;

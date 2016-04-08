@@ -68,6 +68,37 @@ SQL;
      * @param $id ID of the user
      * @returns User object if successful, null otherwise.
      */
+    public function delete($id) {
+        $sql =<<<SQL
+DELETE from $this->tableName
+where id=?
+SQL;
+
+        /*
+        PDO object is our connection to the database.
+        We get that here from our base class
+*/
+        $pdo = $this->pdo();
+        $statement = $pdo->prepare($sql);
+
+        /*
+               Result will fetch user data into an associative array and pass that to the User constructor, or it will
+               return zero rows
+        */
+        $statement->execute(array($id));
+
+
+        return null;
+
+
+    }
+
+
+    /**
+     * Get a user based on the id
+     * @param $id ID of the user
+     * @returns User object if successful, null otherwise.
+     */
     public function get($id) {
         $sql =<<<SQL
 SELECT * from $this->tableName

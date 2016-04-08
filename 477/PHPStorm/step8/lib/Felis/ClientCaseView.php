@@ -12,9 +12,7 @@ namespace Felis;
 class ClientCaseView extends View
 {
 
-    protected $site;		///< The Site object
     private $hidden;
-    private $get;
     private $id;
     private $agents = array();
 

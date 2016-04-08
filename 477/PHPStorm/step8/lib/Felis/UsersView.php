@@ -12,7 +12,7 @@ namespace Felis;
 class UsersView extends View
 {
 
-    private $site;	///< The Site object
+
 
 
     /**
@@ -54,6 +54,7 @@ HTML;
             $email = $user['email'];
             $role = $user['role'];
             $id = $user['id'];
+            $role = $user['role'];
 
 
             $html .= <<<HTML
@@ -61,7 +62,7 @@ HTML;
 			<td><input type="radio" name="user" value="$id"></td>
 			<td>$name</td>
 			<td>$email</td>
-			<td>Role</td>
+			<td>$role</td>
 		</tr>
 HTML;
     }

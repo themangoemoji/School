@@ -12,14 +12,22 @@ namespace Felis;
 class PasswordValidateView extends View
 {
 
-    protected $site;
-
     public function __construct(Site $site, $get, $session) {
         parent::__construct($site, $get, $session);
         $this->setTitle("Felis Password Entry");
         $this->site = $site;
-//        $this->validator = strip_tags($get['v']);
-        $this->validator = "";
+
+        // If an error was thrown, don't go looking for the non-existent validator tag
+        if ($this->errorThrown()) {
+            $this->validator = '';
+        }
+
+        // If no error thrown, get the validator, move on
+        else {
+
+            $this->validator = strip_tags($get['v']);
+        }
+
     }
 
     public function present() {

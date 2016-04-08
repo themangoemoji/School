@@ -1,6 +1,6 @@
 <?php
 require 'lib/site.inc.php';
-$view = new Felis\NewCaseView($site);
+$view = new Felis\NewCaseView($site, $_GET, $_SESSION);
 if(!$view->protect($site, $user)) {
 	header("location: " . $view->getProtectRedirect());
 	exit;
@@ -33,6 +33,7 @@ if(!$view->protect($site, $user)) {
 
 <?php
 echo $view->header();
+echo $view->error();
 echo $view->present();
 echo $view->footer();
 ?>
