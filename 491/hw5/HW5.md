@@ -6,12 +6,12 @@
 
 | Data Point | Equation | Distance From Point |
 |------------|----------|---------------------|
-| 1          |          |  0.3                |
-| 2          |          | 0.223               |
-| 3          |          | 0.489               |
-| 4          |          | 0.424               |
-| 5          |          | 0.566               |
-| 6          |          | 0.656               |
+| 1          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/1.png)          |  0.3                |
+| 2          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/2.png)          | 0.223               |
+| 3          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/3.png)          | 0.489               |
+| 4          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/4.png)          | 0.424               |
+| 5          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/5.png)          | 0.566               |
+| 6          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/6.png)          | 0.656               |
 
 
 ## Question 3
