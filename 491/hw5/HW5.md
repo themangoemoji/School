@@ -166,4 +166,7 @@ Part b SSE: 3.8446852, the algorithm used in part b is better because it has a l
 
 ## Question 6
 
-![e7](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/7.png)
+![6a](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6a.png)
+![6ae](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6ae.png)
+![6b](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6b.png)
+![6be](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6be.png)
