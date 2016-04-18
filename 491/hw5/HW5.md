@@ -2,39 +2,47 @@
 
 ## Question 2
 
-#### 2a
+***Calculate the eucledian distances***:
 
 | Data Point | Equation | Distance From Point |
 |------------|----------|---------------------|
-| 1          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/1.png)          |  0.3                |
-| 2          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/2.png)          | 0.223               |
-| 3          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/3.png)          | 0.489               |
-| 4          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/4.png)          | 0.424               |
-| 5          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/5.png)          | 0.566               |
-| 6          |![e1](https://raw.githubusercontent.com/wrightmhw/School/blob/master/491/hw5/daum/6.png)          | 0.656               |
+| 1          |![e1](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/1.png)| 0.3 |
+| 2          |![e2](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/2.png)|0.223|
+| 3          |![e3](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/3.png)|0.489|
+| 4          |![e4](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/4.png)|0.424|
+| 5          |![e5](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/5.png)|0.566|
+| 6          |![e6](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6.png)|0.656|
 
+#### 2a
+
+P2 is the nearest neighbor
+
+#### 2b
+
+Data points 1, 2, and 3 are the nearest neighbors.
 
 ## Question 3
 
 #### 3a 
 
 ```
-  {Milk}  S=80% (These can also be shown as fractions like in the slides 8/10)
-                    {Bread}  S=70%
-                    {Coffee}  S=40%
-                    {Butter}  S=40%
-                Itemset pairs:
-                    {Bread, Milk}  S=50%
-                    {Bread, Butter}  S=40%
+Milk    S=80%
+Bread   S=70%
+Coffee  S=40%
+Butter  S=40%
+
+Itemset pairs:
+Bread, Milk    ==>  S=50%
+Bread, Butter  ==>  S=40%
 ```
 
 ### 3b
 
 ```
-{Bread} -> {Milk}  S=50% C=5/7 (~71%)
-                {Milk} -> {Bread}  S=50% C=5/8 (62.5%)
-                {Bread} -> {Butter}  S=40% C=4/7 (~57%)
-                {Butter} -> {Bread}  S=40% C=4/4 (100%)
+Bread -> Milk    > S=50% C=5/7 (71%)
+Milk -> Bread    > S=50% C=5/8 (62.5%)
+Bread -> Butter  > S=40% C=4/7 (57%)
+Butter -> Bread  > S=40% C=4/4 (100%)
 ```
 
 
@@ -156,4 +164,6 @@ Part a SSE: 3.911392
 
 Part b SSE: 3.8446852, the algorithm used in part b is better because it has a lower SSE.
 
+## Question 6
 
+![e7](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/7.png)
