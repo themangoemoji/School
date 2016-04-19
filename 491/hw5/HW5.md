@@ -1,5 +1,83 @@
 # Homework 5
 
+## Question 1
+
+#### 1a
+
+Total Entropy:
+
+![1b](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/1a.png)
+
+#### 1b
+
+Calculate entropy by:
+
+![1a](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/1b.png)
+
+|             |     | Class Disease |         | Entropy Child | Entropy Total | 
+|-------------|:---:|:-------------:|:-------:|--------------:|--------------:| 
+|             |     | """+"""       | """-""" |               |               | 
+| Fever       | yes | 18            | 3       | 0.592         | **0.711**     | 
+|             | no  | 7             | 22      | 0.797         |               | 
+| Weight Loss | yes | 21            | 6       | 0.764         | 0.719         | 
+|             | no  | 4             | 19      | 0.666         |               | 
+| Back Pain   | yes | 18            | 12      | 0.971         | 0.0956        | 
+|             | no  | 7             | 13      | 0.934         |               | 
+
+#### 1c
+
+Weight loss is the best root node for both sides (it is lowest)
+
+| Fever = YES |     | Class Disease |         | Entropy Child | Entropy Total | 
+|-------------|:---:|:-------------:|:-------:|--------------:|--------------:| 
+|             |     | """+"""       | """-""" |               |               | 
+| Fever       | yes | 16            | 3       | 0.629         | **0.569**     | 
+|             | no  | 2             | 0       | 0             |               | 
+| Weight Loss | yes | 12            | 2       | 0.5916        |   0.5961      | 
+|             | no  | 6             | 1       | 0.5916        |               | 
+
+
+| Fever = NO  |     | Class Disease |         | Entropy Child | Entropy Total | 
+|-------------|:---:|:-------------:|:-------:|--------------:|--------------:| 
+|             |     | """+"""       | """-""" |               |               | 
+| Fever       | yes | 5             | 3       | 0.9544        | **0.562**     | 
+|             | no  | 2             | 19      | 0.4537        |               | 
+| Weight Loss | yes | 6             | 10      | 0.9544        |   0.949       | 
+|             | no  | 1             | 2       | 0.9183        |               | 
+
+#### 1d
+
+Error Rate: `(3+0+3+2) / (19+2+8+21) = 8/50 = 4/25 = 0.16`
+
+#### 1e
+
+```
+                Fever
+                /  \
+               /    \
+              /      \
+         NO  /        \ YES 
+            /          \
+           /            \
+          /              \
+         /                \
+   Weight Loss        Weight Loss
+        /\                /\
+       /  \              /  \
+  YES /    \ NO     YES /    \ NO
+     /      \          /      \
+    /        \        /        \
+   Yes      Yes     Yes        No
+```
+
+Therefore, the patient would have the disease
+
+#### 1f
+
+i) No
+ii) No
+
+
 ## Question 2
 
 ***Calculate the eucledian distances***:
@@ -166,7 +244,8 @@ Part b SSE: 3.8446852, the algorithm used in part b is better because it has a l
 
 ## Question 6
 
+![6ae](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/6aE.png)
 ![6a](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6a.jpg)
-![6ae](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6ae.png)
+
+![6be](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/6bE.png)
 ![6b](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6b.jpg)
-![6be](https://raw.githubusercontent.com/wrightmhw/School/master/491/hw5/daum/6be.png)
