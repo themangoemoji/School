@@ -103,6 +103,9 @@ Data points 1, 2, and 3 are the nearest neighbors.
 
 #### 3a 
 
+The frequent itemsets of the transactions along with their
+support values:
+
 ```
 Milk    S=80%
 Bread   S=70%
@@ -115,6 +118,8 @@ Bread, Butter  ==>  S=40%
 ```
 
 ### 3b
+
+The association rules whose confidence is more than 50% and support is at least 40%:
 
 ```
 Bread -> Milk    > S=50% C=5/7 (71%)
